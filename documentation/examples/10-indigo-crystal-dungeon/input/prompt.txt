@@ -1,0 +1,1 @@
+$tiled-ai-create-art Create a 64x64 scene sheet in layout tileset-layout-wang-mixed with the theme indigo crystal dungeon. Keep the exact 24x10 reference silhouette, interior room, exterior assembly, detached supports, stairs, liquid, and transparent gaps. Then make a separate Mixed Wang companion and a 28x14 Figure 8 sample level with a 4x4 unwalkable core.
