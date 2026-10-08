@@ -1,4 +1,0 @@
-interface:
-  display_name: "AI Tiled Create Art"
-  short_description: "Generate themed Scene Sheet tileset PNGs"
-  default_prompt: "Use $ai-tiled-create-art to create a tileset: retro art style in a dungeon world at 16x16."

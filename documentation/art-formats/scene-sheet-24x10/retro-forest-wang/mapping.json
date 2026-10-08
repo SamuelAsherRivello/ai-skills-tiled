@@ -1,0 +1,339 @@
+{
+  "theme": "Retro Forest",
+  "source_scene_sheet": "documentation\\art-formats\\scene-sheet-24x10\\retro-forest.png",
+  "authored_by": "Codex",
+  "authored_date": "2026-10-08",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 6,
+  "rows": 4,
+  "wang_set": "Fenced clearings",
+  "wang_color": "Walkable grass",
+  "wang_type": "mixed",
+  "painted_direction": "walkable grass footprint enclosed by picket fencing",
+  "supported_footprint": "Figure 8 with two 10x10 rooms, a 4-tile bridge, and a 4x4 core",
+  "figure8_required_masks": [
+    7,
+    28,
+    31,
+    112,
+    124,
+    127,
+    193,
+    199,
+    223,
+    241,
+    247,
+    253,
+    255
+  ],
+  "tiles": [
+    {
+      "local_id": 0,
+      "mask": 7,
+      "wang_id": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "local_id": 1,
+      "mask": 28,
+      "wang_id": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "local_id": 2,
+      "mask": 31,
+      "wang_id": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "local_id": 3,
+      "mask": 63,
+      "wang_id": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "local_id": 4,
+      "mask": 112,
+      "wang_id": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "local_id": 5,
+      "mask": 124,
+      "wang_id": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "local_id": 6,
+      "mask": 126,
+      "wang_id": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "local_id": 7,
+      "mask": 127,
+      "wang_id": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "local_id": 8,
+      "mask": 159,
+      "wang_id": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "local_id": 9,
+      "mask": 193,
+      "wang_id": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 10,
+      "mask": 199,
+      "wang_id": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 11,
+      "mask": 207,
+      "wang_id": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 12,
+      "mask": 223,
+      "wang_id": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 13,
+      "mask": 231,
+      "wang_id": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 14,
+      "mask": 241,
+      "wang_id": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 15,
+      "mask": 243,
+      "wang_id": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 16,
+      "mask": 247,
+      "wang_id": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 17,
+      "mask": 249,
+      "wang_id": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 18,
+      "mask": 252,
+      "wang_id": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 19,
+      "mask": 253,
+      "wang_id": [
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "local_id": 20,
+      "mask": 255,
+      "wang_id": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "excluded_tiles": {
+    "21": "solid black void",
+    "22": "forest pond",
+    "23": "uniform picket fence for the basic sample"
+  },
+  "grass_source_cell": [
+    3,
+    5
+  ],
+  "pond_source_cell": [
+    18,
+    8
+  ]
+}

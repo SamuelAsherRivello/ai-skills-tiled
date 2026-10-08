@@ -308,6 +308,17 @@ For the default Figure 8, create a disposable map using the exact TSX:
 - When the art has an opaque void tile, place it in the unpainted 4×4 core
   after the Wang operation so that core is visibly non-walkable. This is a
   deliberate fill, not a claimed Wang result.
+- Compare every inner corner with the matching outer corner at the same
+  orientation. For a full-width room wall, a small quadrant cutout is not
+  equivalent to the complete corner tile. For walls with a visible cap, face,
+  and lower shadow, inspect all three bands at each straight-to-corner seam;
+  Wang ID agreement alone cannot prove visual height continuity. Check the
+  four bridge joins too:
+  a walkable-footprint Wang mask may be identical to ordinary floor or a
+  straight wall even when the desired drawing has a room-wall turn. Keep the
+  Wang-painted footprint intact and put those explicit corner tiles on a
+  separate `Wall Joints` layer above `Walls`; record the cells and tile IDs.
+  Do not claim that the Wang set generated the overlay.
 - Verify the complete cell set with `read_region` and the rendered map with
   `get_region_image`. The test fails if any expected Wang cell is null,
   transparent, a wrong-facing edge, or a broken join.

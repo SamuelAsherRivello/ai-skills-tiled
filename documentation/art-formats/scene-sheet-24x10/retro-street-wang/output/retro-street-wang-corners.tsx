@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tileset version="1.11" tiledversion="1.12.2" name="Retro Street Room Walls" tilewidth="16" tileheight="16" tilecount="24" columns="6">
+ <image source="image-517f97457346f5c4e43948141a4f80dbbabc79c2ff64a59958de77c63e53601d.png" width="96" height="64"/>
+ <wangsets>
+  <wangset name="Walled streets" type="mixed" tile="-1">
+   <wangcolor name="Walkable street" color="#ff0000" tile="-1" probability="1"/>
+   <wangtile tileid="0" wangid="1,1,1,0,0,0,0,0"/>
+   <wangtile tileid="1" wangid="0,0,1,1,1,0,0,0"/>
+   <wangtile tileid="2" wangid="1,1,1,1,1,0,0,0"/>
+   <wangtile tileid="3" wangid="1,1,1,1,1,1,0,0"/>
+   <wangtile tileid="4" wangid="0,0,0,0,1,1,1,0"/>
+   <wangtile tileid="5" wangid="0,0,1,1,1,1,1,0"/>
+   <wangtile tileid="6" wangid="0,1,1,1,1,1,1,0"/>
+   <wangtile tileid="7" wangid="1,1,1,1,1,1,1,0"/>
+   <wangtile tileid="8" wangid="1,1,1,1,1,0,0,1"/>
+   <wangtile tileid="9" wangid="1,0,0,0,0,0,1,1"/>
+   <wangtile tileid="10" wangid="1,1,1,0,0,0,1,1"/>
+   <wangtile tileid="11" wangid="1,1,1,1,0,0,1,1"/>
+   <wangtile tileid="12" wangid="1,1,1,1,1,0,1,1"/>
+   <wangtile tileid="13" wangid="1,1,1,0,0,1,1,1"/>
+   <wangtile tileid="14" wangid="1,0,0,0,1,1,1,1"/>
+   <wangtile tileid="15" wangid="1,1,0,0,1,1,1,1"/>
+   <wangtile tileid="16" wangid="1,1,1,0,1,1,1,1"/>
+   <wangtile tileid="17" wangid="1,0,0,1,1,1,1,1"/>
+   <wangtile tileid="18" wangid="0,0,1,1,1,1,1,1"/>
+   <wangtile tileid="19" wangid="1,0,1,1,1,1,1,1"/>
+   <wangtile tileid="20" wangid="1,1,1,1,1,1,1,1"/>
+   <properties>
+    <property name="tiled-ai:terrain-names" value="[&quot;Walkable street&quot;]"/>
+   </properties>
+  </wangset>
+ </wangsets>
+</tileset>

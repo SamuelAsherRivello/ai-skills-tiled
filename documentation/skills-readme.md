@@ -4,7 +4,7 @@ Art generation plus MCP-backed workflows for editing an open
 [Tiled](https://www.mapeditor.org/) project. Run setup before any skill that
 edits the live editor; it verifies the `rpgjs/tiled-ai` bridge and connection.
 
-- [AI Tiled Create Art](../skills/ai-tiled-create-art/SKILL.md): Generate an
+- [Tiled AI Create Art](../skills/tiled-ai-create-art/SKILL.md): Generate an
   original Scene Sheet PNG from a style, world, and tile-size brief.
 
 - [Tiled AI Setup](../skills/tiled-ai-setup/SKILL.md): Set up and verify the Tiled AI

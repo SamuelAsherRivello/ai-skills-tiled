@@ -94,19 +94,31 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
      tile across every `Floor` cell, including the exterior and lower-right
      area. Add water or other display materials only when the caller asks;
      the default sample should show the Figure 8 wall topology clearly.
+     Where a bridge corner has the same Wang mask as an ordinary floor or
+     straight-wall cell, place its matching room-corner tile on a separate
+     `Wall Joints` layer above `Walls`. Document those manual join cells and
+     verify that the underlying `Walls` layer still matches every Wang mask.
    - If Wang metadata exists but this footprint is unverified, use
      `/tiled-ai-add-tileset-autotiling` to verify or repair it before Wang
      painting. If the footprint cannot be verified, report that result; do
      not label a manually assembled map as Wang-autotiled. If painting
      produces a blank, wrong-facing, or broken join, return to that skill.
-6. Verify the floor, empty Objects layer, Walls result, and layer order with
+6. When the source sheet distinguishes an upper-left internal room from an
+   upper-right external wallset, compare the rendered left lobe with the
+   source's internal wall art. A correct Wang ID table is insufficient if its
+   rendered wall thickness, cap, or material does not match that art; revise
+   the companion roles and repaint before delivering the sample. For walls
+   that depict height inside one tile, check that the cap, face, and lower
+   shadow stay aligned through straight runs, all four room corners, and
+   bridge joins in the full map render.
+7. Verify the floor, empty Objects layer, Walls result, and layer order with
    `read_region`, `list_layers`, and `get_region_image`. `read_region` pages
    at 256 cells, and images are bounded to 1024 pixels per dimension; paginate
    cell reads and split a 50×50, 32-pixel visual inspection into bounded views.
    In basic mode, verify that every boundary cell has the one wall tile, the
    left interior has the walkable tile, and the right patch has the
    empty-looking third tile.
-7. Re-read revisions after every mutation. Save the map with `save_map` and
+8. Re-read revisions after every mutation. Save the map with `save_map` and
    save the external tileset separately with `save_tileset` only if it changed.
 
 Follow the shared [MCP editing contract](references/tiled-ai-mcp.md).

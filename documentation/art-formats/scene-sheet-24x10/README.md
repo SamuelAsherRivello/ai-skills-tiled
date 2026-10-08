@@ -13,18 +13,32 @@ the user-supplied `Tileset_Dungeon.png`; its original creator and license were
 not provided. This derived sheet is an art-format example, not a verified
 Tiled TSX or a claim that every cell tiles seamlessly.
 
-Planned themes using this layout:
+The second theme, **Retro Forest**, keeps the same Scene Sheet size and grid:
 
-1. **Retro Forest:** picket-fence walls; a single repeating 16x16 grass tile
-   for the interior and former black areas.
-2. **Retro Street:** brick walls; repeating city-street ground in those same
-   areas; dark dirty-blue sewer water.
+![Retro Forest sheet](retro-forest.png)
+
+It replaces both wall sections with picket fencing, uses one pixel-identical
+16x16 grass tile across clear grass cells in the room and former dark areas,
+and keeps a forest pond in the lower right. The composed PNG is accompanied by
+a [three-tile basic Figure 8](retro-forest-basic/README.md) and a separate
+[limited Wang-ready fence set](retro-forest-wang/README.md), both built and
+verified in the live Tiled editor.
+
+The third theme, **Retro Street**, uses brick walls, one repeated cobblestone
+ground cell in the room and former dark areas, and dark dirty-blue sewer
+water. It keeps the original room, exterior wallset, stairs, and water
+footprints on the same 24×10 grid:
+
+![Retro Street sheet](retro-street.png)
+
+Its [source and composition notes](retro-street/README.md),
+[three-tile basic Figure 8](retro-street-basic/README.md), and
+[limited Wang-ready brick set](retro-street-wang/README.md) are included.
 
 The format contract and validator ship with
-[`ai-tiled-create-art`](../../../skills/ai-tiled-create-art/SKILL.md).
+[`tiled-ai-create-art`](../../../skills/tiled-ai-create-art/SKILL.md).
 
-The [basic Figure 8 sample](retro-dungeon-basic/README.md) demonstrates the
-three-tile layout before autotiling. The
-[Retro Dungeon Wang companion](retro-dungeon-wang/README.md) provides the
-more complex, live-Tiled-verified sample after autotiling. The composed
-384x160 Scene Sheet itself has no Wang metadata.
+The [Retro Dungeon basic Figure 8](retro-dungeon-basic/README.md) and
+[Retro Dungeon Wang companion](retro-dungeon-wang/README.md) document the
+first theme. Each composed 384x160 Scene Sheet itself has no Wang metadata;
+the corresponding external TSX carries it.

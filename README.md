@@ -59,7 +59,7 @@ Pull this repository and reinstall selected packages. On Windows, the package in
 Generate art directly, then run setup before any workflow that edits an open Tiled document. MCP-backed edits require a live bridge connection.
 
 ```text
-$ai-tiled-create-art retro art style in a dungeon world at 16x16
+$tiled-ai-create-art retro art style in a dungeon world at 16x16
 
 $tiled-ai-setup
 $tiled-ai-add-tileset Use this 16x16 tile sheet to create an external TSX beside my map.
@@ -74,7 +74,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 
 [Browse all twelve skills](documentation/skills-readme.md), from art generation and setup through tilesets, Automapping, objects, spawners, and collider updates.
 
-[See the Scene Sheet 24x10 art format](documentation/art-formats/scene-sheet-24x10/README.md) and its first Retro Dungeon theme.
+[See the Scene Sheet 24x10 art format](documentation/art-formats/scene-sheet-24x10/README.md) and its Retro Dungeon, Forest, and Street themes.
 
 ### References
 

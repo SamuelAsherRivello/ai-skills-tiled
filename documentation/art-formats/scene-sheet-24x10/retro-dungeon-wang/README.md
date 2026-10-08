@@ -14,7 +14,7 @@ reference; its original creator and license were not provided.
   [external tileset](output/retro-dungeon-wang.tsx) and the image beside it.
 - The [earlier Wang sample](output/retro-dungeon-sample.tmx) remains available.
 - [Role key](mapping.json) records every local tile ID and eight-value Wang
-  assignment. The [builder](../../../../skills/ai-tiled-create-art/scripts/build_dungeon_wang_companion.py)
+  assignment. The [builder](../../../../skills/tiled-ai-create-art/scripts/build_dungeon_wang_companion.py)
   creates the PNG and role key.
 
 The `rpgjs/tiled-ai` live bridge imported the image into Tiled 1.12.2 and
