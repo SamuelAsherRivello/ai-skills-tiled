@@ -25,8 +25,8 @@ def expected_files(repo, client):
 
 def sync(repo, check=False):
     errors = []
-    for client in ("codex", "claude"):
-        target = repo / ("." + client) / "skills"
+    for client, package_directory in (("codex", ".agents"), ("claude", ".claude")):
+        target = repo / package_directory / "skills"
         expected = expected_files(repo, client)
         existing = {p.relative_to(target) for p in target.rglob("*") if p.is_file()
                     and "__pycache__" not in p.parts and p.suffix not in (".pyc", ".pyo")}

@@ -13,7 +13,7 @@ From this repository in PowerShell, preview then install a project-local package
 ./scripts/install-codex.ps1 -Scope Project -ProjectPath C:\MyProject -Skills all
 ```
 
-Use `-Scope User` for all projects. Select names with `-Skills`. Existing destinations require `-Replace` and receive recoverable backups. The generated package is in `.codex/skills/`; the installer copies it to the client's `.agents/skills/` discovery directory.
+Use `-Scope User` for all projects. Select names with `-Skills`. Existing destinations require `-Replace` and receive recoverable backups. The generated package is in `.agents/skills/`; the installer copies it to the client's `.agents/skills/` discovery directory.
 
 ## Verify
 

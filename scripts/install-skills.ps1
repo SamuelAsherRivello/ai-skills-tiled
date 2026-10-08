@@ -11,7 +11,8 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent $PSScriptRoot
-$sourceRoot = Join-Path $repo ".$Client\skills"
+$packageDirectory = if ($Client -eq 'codex') { '.agents' } else { '.claude' }
+$sourceRoot = Join-Path $repo "$packageDirectory\skills"
 $clientDirectory = if ($Client -eq 'codex') { '.agents' } else { '.claude' }
 if ($Scope -eq 'Project') {
     if (-not $ProjectPath) { throw 'Project scope requires -ProjectPath.' }

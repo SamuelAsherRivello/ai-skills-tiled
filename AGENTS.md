@@ -2,7 +2,7 @@
 
 ## Source and packages
 
-Author skills in `skills/`. Keep each skill independently installable, including required references and helper scripts. Run `python scripts/sync-client-skills.py` after source changes and `python scripts/sync-client-skills.py --check` before committing. The Codex and Claude Code package directories are generated outputs. The Claude Code setup adapter is `scripts/adapters/claude-tiled-ai-setup.md`.
+Author skills in `skills/`. Keep each skill independently installable, including required references and helper scripts. Run `python scripts/sync-client-skills.py` after source changes and `python scripts/sync-client-skills.py --check` before committing. The `.agents/skills/` Codex and `.claude/skills/` Claude Code package directories are generated outputs. The Claude Code setup adapter is `scripts/adapters/claude-tiled-ai-setup.md`.
 
 ## Tiled work
 

@@ -11,7 +11,7 @@
 
 # AI Skills Tiled
 
-Create and edit 2D game art, maps, tilesets, terrain, objects, and collision data with twelve reusable [Tiled](https://www.mapeditor.org/) skills. Authoring sources live in [skills/](skills/). Generated client packages live in [.codex/](.codex/INSTALL.md) and [.claude/](.claude/INSTALL.md).
+Create and edit 2D game art, maps, tilesets, terrain, objects, and collision data with twelve reusable [Tiled](https://www.mapeditor.org/) skills. Authoring sources live in [skills/](skills/). Generated client packages live in [.agents/skills/](.agents/skills/) for Codex and [.claude/skills/](.claude/skills/) for Claude Code.
 
 > [!IMPORTANT]
 > Skills that edit an open Tiled document use the existing [rpgjs/tiled-ai](https://github.com/rpgjs/tiled-ai) MCP bridge. Art generation works without an editor connection. This repository contains skills, examples, and documentation; it does not contain or replace the bridge.
@@ -88,7 +88,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 ### Structure
 
 - `skills/`: shared authoring sources.
-- `.codex/skills/`: generated Codex package with UI metadata.
+- `.agents/skills/`: generated Codex package with UI metadata.
 - `.claude/skills/`: generated Claude Code package with a client-specific setup workflow.
 - `scripts/`: installation, package synchronization, and validation.
 - `documentation/references/`: source reference material.

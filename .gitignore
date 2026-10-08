@@ -1,10 +1,10 @@
 # Local execution output and authoring state
 /.acceptance/
 /openspec/
-/.agents/
+/.agents/*
+!/.agents/skills/
 /.codex/*
 !/.codex/INSTALL.md
-!/.codex/skills/
 /.claude/*
 !/.claude/INSTALL.md
 !/.claude/skills/
