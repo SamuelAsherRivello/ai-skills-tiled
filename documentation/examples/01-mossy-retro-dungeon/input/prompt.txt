@@ -1,0 +1,1 @@
+$tiled-ai-create-tileset-png Create a grid-safe mixed Wang tileset at 16x16 with the theme retro pixel art, mossy blue-gray dungeon walls and stone floor; then add the tileset and Wang terrain in Tiled and make a 28x14 Figure 8 sample level with a 4x4 unwalkable core.

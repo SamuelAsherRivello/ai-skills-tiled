@@ -15,7 +15,7 @@ lobe has the same stone cap and substantial red brick face.
   [external tileset](output/retro-street-wang-corners.tsx) and imported PNG beside
   it.
 - [Role key](mapping.json) records every local tile ID and its eight-value
-  Wang assignment. The [builder](../../../../skills/tiled-ai-create-art/scripts/build_street_wang_companion.py)
+  Wang assignment. The [builder](../../../../skills/tiled-ai-create-tileset-png/scripts/build_street_wang_companion.py)
   recreates the PNG and key.
 - The earlier [boundary probe](output/retro-street-wang-room-probe.tmx) tested
   the same Wang masks before this corner-art correction.

@@ -96,7 +96,7 @@ comment must state the smallest concrete repair and the table row where the
 next run resumes. Every Blocked comment must name the missing evidence or user
 action. Below the table, state **MCP Readiness** and **Editor Readiness**
 separately. When all rows pass, identify the active Tiled document and suggest
-`$tiled-ai-add-sample-level` as the next authoring test.
+`$tiled-ai-create-sample-map-tmx` as the next authoring test.
 
 ## Result Links
 

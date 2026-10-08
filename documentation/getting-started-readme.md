@@ -19,7 +19,7 @@ From a project directory, `npx skills@latest add SamuelAsherRivello/ai-skills-ti
 
 Invoke `$tiled-ai-setup` in Codex or `/tiled-ai-setup` in Claude Code. The setup report checks the editor, bridge, extension, MCP registration, and live document session separately. A running bridge process alone does not prove Tiled is connected.
 
-After setup passes, try a focused skill such as `tiled-ai-add-tileset` or `tiled-ai-add-sample-level`. The skills explain when changes stay in the editor and when a save is needed.
+After setup passes, try a focused skill such as `tiled-ai-create-tileset-tsx` or `tiled-ai-create-sample-map-tmx`. The skills explain when changes stay in the editor and when a save is needed.
 
 ## Updating
 

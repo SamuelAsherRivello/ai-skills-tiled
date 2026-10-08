@@ -1,9 +1,0 @@
-interface:
-  display_name: "Tiled AI Add Tileset"
-  short_description: "Convert tile-sheet art into a Tiled TSX"
-  default_prompt: "Use $tiled-ai-add-tileset to convert this tile-sheet image into an external Tiled TSX."
-dependencies:
-  tools:
-    - type: "mcp"
-      value: "tiled-ai"
-      description: "Live Tiled editor bridge"

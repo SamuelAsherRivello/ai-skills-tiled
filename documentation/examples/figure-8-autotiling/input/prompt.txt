@@ -1,0 +1,1 @@
+Create a portable Tiled Figure 8 autotiling sample with two 10 × 10 walkable rooms, a four-tile-tall connecting bridge, and a 4 × 4 unwalkable core in the right room. Include a repeated Floor layer, Wang-tiled Walls, an empty Objects layer, an external TSX with its local image, and a preview.

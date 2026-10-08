@@ -1,0 +1,9 @@
+interface:
+  display_name: "Tiled AI Create Spawner Object"
+  short_description: "Create map-authored spawners and runtime integration"
+  default_prompt: "Use $tiled-ai-create-spawner-object to create or update this spawner object through Tiled AI."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "tiled-ai"
+      description: "Live Tiled editor bridge"

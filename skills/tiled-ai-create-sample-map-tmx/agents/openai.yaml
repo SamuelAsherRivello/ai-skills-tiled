@@ -1,0 +1,9 @@
+interface:
+  display_name: "Tiled AI Create Sample Map TMX"
+  short_description: "Create a layered Tiled sample map"
+  default_prompt: "Use $tiled-ai-create-sample-map-tmx to create a sample TMX map from this tileset."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "tiled-ai"
+      description: "Live Tiled editor bridge"

@@ -1,9 +1,0 @@
-interface:
-  display_name: "Tiled AI Add Sample Level"
-  short_description: "Create a layered autotile sample level"
-  default_prompt: "Use $tiled-ai-add-sample-level to create a sample level from this tileset."
-dependencies:
-  tools:
-    - type: "mcp"
-      value: "tiled-ai"
-      description: "Live Tiled editor bridge"

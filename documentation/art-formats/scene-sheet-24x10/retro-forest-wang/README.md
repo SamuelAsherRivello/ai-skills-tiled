@@ -13,7 +13,7 @@ were authored for this Figure 8 layout.
 - [Open the Wang Figure 8](output/retro-forest-figure-8-wang.tmx) with its
   [external tileset](output/retro-forest-wang.tsx) and imported PNG beside it.
 - [Role key](mapping.json) records every local tile ID and its eight-value
-  Wang assignment. The [builder](../../../../skills/tiled-ai-create-art/scripts/build_forest_wang_companion.py)
+  Wang assignment. The [builder](../../../../skills/tiled-ai-create-tileset-png/scripts/build_forest_wang_companion.py)
   recreates the PNG and key.
 - [Boundary probe](output/retro-forest-wang-probe.tmx) is the live Tiled
   4×4 paint fixture used before the full Figure 8.

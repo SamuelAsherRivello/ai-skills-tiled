@@ -14,15 +14,16 @@
 Create and edit 2D game art, maps, tilesets, terrain, objects, and collision data with twelve reusable [Tiled](https://www.mapeditor.org/) skills. Authoring sources live in [skills/](skills/). Generated client packages live in [.codex/](.codex/INSTALL.md) and [.claude/](.claude/INSTALL.md).
 
 > [!IMPORTANT]
-> Skills that edit an open Tiled document use the existing [rpgjs/tiled-ai](https://github.com/rpgjs/tiled-ai) MCP bridge. Art generation works without an editor connection. This repository contains skills, examples, and documentation; it does not contain or replace that bridge.
+> Skills that edit an open Tiled document use the existing [rpgjs/tiled-ai](https://github.com/rpgjs/tiled-ai) MCP bridge. Art generation works without an editor connection. This repository contains skills, examples, and documentation; it does not contain or replace the bridge.
 
 ## Images
 
 The thumbnail above adapts the visual composition of [AI Skills Blender](https://github.com/SamuelAsherRivello/ai-skills-blender) for 2D level design. See the [marketing asset notes](documentation/marketing/README.md).
 
-### Example
+### Examples
 
-<a href="documentation/examples/starter-map/README.md"><img src="documentation/examples/starter-map/output/preview.png" width="320" alt="Starter Tiled map with grass, water, and path" /></a>
+<a href="documentation/examples-readme.md"><img src="documentation/examples/06-sunlit-desert-oasis/output/preview.png" width="320" alt="Sunlit Desert Oasis Wang sample level" /></a>
+<a href="documentation/examples-readme.md"><img src="documentation/examples/05-robotic-coolant-facility/output/preview.png" width="320" alt="Robotic Coolant Facility Wang sample level" /></a>
 
 ## Table of Contents
 
@@ -59,11 +60,11 @@ Pull this repository and reinstall selected packages. On Windows, the package in
 Generate art directly, then run setup before any workflow that edits an open Tiled document. MCP-backed edits require a live bridge connection.
 
 ```text
-$tiled-ai-create-art retro art style in a dungeon world at 16x16
+$tiled-ai-create-tileset-png retro art style in a dungeon world at 16x16
 
 $tiled-ai-setup
-$tiled-ai-add-tileset Use this 16x16 tile sheet to create an external TSX beside my map.
-$tiled-ai-add-sample-level Build a small level from the inspected tileset.
+$tiled-ai-create-tileset-tsx Use this 16x16 tile sheet to create an external TSX beside my map.
+$tiled-ai-create-sample-map-tmx Build a small level from the inspected tileset.
 ```
 
 Claude Code uses `/skill-name` syntax. Each skill states its inputs, verification steps, and save behavior.
@@ -82,7 +83,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 
 ### Examples
 
-[Open the examples guide](documentation/examples/README.md) for a portable Tiled map and tileset.
+[Browse ten Wang examples](documentation/examples-readme.md) with prompts, portable Tiled maps, tileset PNGs, and sample level PNGs at 16×16, 32×32, and 64×64.
 
 ### Structure
 
@@ -91,7 +92,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 - `.claude/skills/`: generated Claude Code package with a client-specific setup workflow.
 - `scripts/`: installation, package synchronization, and validation.
 - `documentation/references/`: source reference material.
-- `documentation/examples/`: portable example project and previews.
+- `documentation/examples/`: portable example projects and previews.
 - `documentation/marketing/`: project artwork and source notes.
 
 ### Dependencies

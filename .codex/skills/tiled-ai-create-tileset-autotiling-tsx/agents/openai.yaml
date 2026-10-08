@@ -1,0 +1,9 @@
+interface:
+  display_name: "Tiled AI Create Tileset Autotiling TSX"
+  short_description: "Author and verify tileset Wang metadata"
+  default_prompt: "Use $tiled-ai-create-tileset-autotiling-tsx to configure and test autotiling for this open tileset."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "tiled-ai"
+      description: "Live Tiled editor bridge"
