@@ -4,17 +4,17 @@
 </p>
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-11-orange.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-12-orange.svg)](skills/)
 [![Tiled](https://img.shields.io/badge/editor-Tiled-blue.svg)](https://www.mapeditor.org/)
 [![Codex](https://img.shields.io/badge/Codex-skills-green.svg)](.codex/INSTALL.md)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-skills-black.svg)](.claude/INSTALL.md)
 
 # AI Skills Tiled
 
-Create and edit 2D game maps, tilesets, terrain, objects, and collision data with eleven reusable [Tiled](https://www.mapeditor.org/) skills. Authoring sources live in [skills/](skills/). Generated client packages live in [.codex/](.codex/INSTALL.md) and [.claude/](.claude/INSTALL.md).
+Create and edit 2D game art, maps, tilesets, terrain, objects, and collision data with twelve reusable [Tiled](https://www.mapeditor.org/) skills. Authoring sources live in [skills/](skills/). Generated client packages live in [.codex/](.codex/INSTALL.md) and [.claude/](.claude/INSTALL.md).
 
 > [!IMPORTANT]
-> These workflows use the existing [rpgjs/tiled-ai](https://github.com/rpgjs/tiled-ai) MCP bridge to work with an open Tiled editor. This repository contains skills, examples, and documentation; it does not contain or replace that bridge.
+> Skills that edit an open Tiled document use the existing [rpgjs/tiled-ai](https://github.com/rpgjs/tiled-ai) MCP bridge. Art generation works without an editor connection. This repository contains skills, examples, and documentation; it does not contain or replace that bridge.
 
 ## Images
 
@@ -56,9 +56,11 @@ Pull this repository and reinstall selected packages. On Windows, the package in
 
 ## Use Skills
 
-Run the setup skill before an authoring workflow. An open Tiled document and live bridge connection are required for MCP-backed edits.
+Generate art directly, then run setup before any workflow that edits an open Tiled document. MCP-backed edits require a live bridge connection.
 
 ```text
+$ai-tiled-create-art retro art style in a dungeon world at 16x16
+
 $tiled-ai-setup
 $tiled-ai-add-tileset Use this 16x16 tile sheet to create an external TSX beside my map.
 $tiled-ai-add-sample-level Build a small level from the inspected tileset.
@@ -70,7 +72,9 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 
 ### Skills
 
-[Browse all eleven skills](documentation/skills-readme.md), from setup through tilesets, Automapping, objects, spawners, and collider updates.
+[Browse all twelve skills](documentation/skills-readme.md), from art generation and setup through tilesets, Automapping, objects, spawners, and collider updates.
+
+[See the Scene Sheet 24x10 art format](documentation/art-formats/scene-sheet-24x10/README.md) and its first Retro Dungeon theme.
 
 ### References
 

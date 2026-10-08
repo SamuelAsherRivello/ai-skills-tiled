@@ -11,9 +11,9 @@ From the repo root, validate all packages:
 
 ```sh
 python scripts/sync-client-skills.py --check
-python scripts/validate-skills.py skills --expected-count 11 --require-openai-metadata
-python scripts/validate-skills.py .codex/skills --expected-count 11 --require-openai-metadata
-python scripts/validate-skills.py .claude/skills --client claude --expected-count 11
+python scripts/validate-skills.py skills --expected-count 12 --require-openai-metadata
+python scripts/validate-skills.py .codex/skills --expected-count 12 --require-openai-metadata
+python scripts/validate-skills.py .claude/skills --client claude --expected-count 12
 python scripts/validate_repository.py
 ```
 

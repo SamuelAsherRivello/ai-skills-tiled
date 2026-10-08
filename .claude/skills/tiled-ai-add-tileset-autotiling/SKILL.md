@@ -297,6 +297,9 @@ For the default Figure 8, create a disposable map using the exact TSX:
 
 - A repeated Floor layer, an empty Objects object layer, and a Walls tile
   layer in the visual order `Objects`, `Walls`, `Floor`.
+- Use the same walkable tile throughout the Floor layer. Keep optional water,
+  props, and other materials out of the default Wang proof so the rendered
+  boundary and corner joins are easy to inspect; add them only when requested.
 - Paint the **walkable footprint** on Walls, not a one-cell wall stroke: a
   10×10 left lobe, a 10×10 right lobe, and a four-tile-tall bridge between
   them. The bridge contains a two-tile-tall walkable passage, so its top and

@@ -1,9 +1,11 @@
 # Tiled AI Skills
 
-MCP-backed workflows for editing an open [Tiled](https://www.mapeditor.org/)
-project through the verified `rpgjs/tiled-ai` bridge. Run setup before any
-authoring skill; it verifies the local bridge, extension, Codex MCP entry, and
-live editor connection.
+Art generation plus MCP-backed workflows for editing an open
+[Tiled](https://www.mapeditor.org/) project. Run setup before any skill that
+edits the live editor; it verifies the `rpgjs/tiled-ai` bridge and connection.
+
+- [AI Tiled Create Art](../skills/ai-tiled-create-art/SKILL.md): Generate an
+  original Scene Sheet PNG from a style, world, and tile-size brief.
 
 - [Tiled AI Setup](../skills/tiled-ai-setup/SKILL.md): Set up and verify the Tiled AI
   bridge before map edits.

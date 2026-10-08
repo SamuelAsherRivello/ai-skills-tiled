@@ -1,6 +1,6 @@
 ---
 name: tiled-ai-add-sample-level
-description: Create a small Tiled AI sample level from one tileset with empty Objects, Wang-autotiled Walls, and a repeated Floor. Use when a project needs a fresh playable map or an end-to-end terrain test.
+description: Create a Tiled AI Figure 8 sample from one tileset. Before autotiling use one wall, one walkable floor, and one empty-looking tile; with verified Wang metadata use a more complex layout.
 ---
 
 # Tiled AI Add Sample Level
@@ -19,11 +19,21 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
   supplied tileset's grid differs, keep its grid and report that override.
 - Do not ask for an output path. Unless the caller supplies one, save below
   `<workspace>/output/tiled-ai-sample-level/` as
-  `<tileset-slug>-figure-8.tmx`. If it exists, increment a suffix such as
-  `-2` before `.tmx` until the path is unused. Resolve the resulting absolute
-  path before `create_map`; never overwrite an existing map.
+  `<tileset-slug>-figure-8-basic.tmx` without Wang metadata or
+  `<tileset-slug>-figure-8-wang.tmx` with verified Wang metadata. If it exists,
+  increment a suffix such as `-2` before `.tmx` until the path is unused.
+  Resolve the resulting absolute path before `create_map`; never overwrite an
+  existing map.
 - Run `$tiled-ai-setup` first and call `get_editor_state`; stop if Tiled is not
   connected.
+- Inspect the selected tileset's current revision and `list_wang_sets` before
+  choosing a layout. An empty list means **basic mode**. A Wang set is ready
+  for **Wang mode** only when its documented footprint has been verified in
+  the live editor; metadata alone is not proof that the Figure 8 will render.
+- When the caller marks or names the three basic-mode tiles, use those picks
+  for the stated roles. For an annotated image, confirm its grid and convert
+  each marked cell to the exact local tile ID before editing; do not replace
+  a caller's pick with your own visual preference.
 
 ## Build the map
 
@@ -34,54 +44,68 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
    MCP returns root layers bottom-to-top, so create and verify the returned
    order `Floor`, `Walls`, `Objects`; use the live layer IDs rather than names
    alone.
-3. Use exactly the selected tileset for the entire first iteration: select one
-   caller-supplied or clearly designated base/floor tile and fill all 50×50
-   default cells with it using `fill_region` or `set_tiles`. Use the same
-   tileset's Wang set for Walls. Do not attach, mix, or infer a second tileset.
-   Do not choose a decorative, collision, or terrain-edge tile as the floor
-   without confirmation.
+3. Use exactly the selected tileset. Inspect its image and choose explicit
+   local tile IDs that visually match their roles. Do not attach, mix, or infer
+   a second tileset. Fill the whole map with the tile that looks most like a
+   walkable floor. Prefer a seamless repeat, but do not require one. Do not
+   choose an obvious decorative, collision, or terrain-edge tile as the base
+   when a better floor tile exists. If the image lacks a suitable tile for a
+   required role, report that limitation instead of inventing an ID.
 4. Treat Automapping as a companion **rule bundle**, not a property of the
    TSX. When the caller supplies a compatible, execution-verified rule map and
    `rules.txt` that target this map's layers, preserve their target-layer
    contract and use the bundle after building its inputs. Otherwise continue
-   with the Wang-only flow below; a tileset without rules remains fully
-   supported. The current live `tiled-ai` MCP does not expose Map > AutoMap.
+   with the applicable basic or Wang flow below; a tileset without rules
+   remains fully supported. The current live `tiled-ai` MCP does not expose
+   Map > AutoMap.
    Never invoke an external process against the new map while Tiled has it
    open. If the caller needs Automapping output now, save and return the input
    map plus the verified bundle with a clear execution handoff, rather than
    claiming the rule output was generated. Use
    `$tiled-ai-add-tileset-automapping` to author or independently verify a
    rule bundle on a disposable, unopened fixture.
-5. Run `$tiled-ai-add-tileset-autotiling` when the selected tileset has not
-   already been classified. A default **Figure 8** must use one of its
-   verified outcomes; never produce a floor-only substitute:
-   - For a **Wang-ready** tileset, inspect `list_wang_sets` against the map
-     and its attached tileset ID. Use the map-local Wang-set and color IDs
-     returned after attachment—they may differ from the source tileset
-     document's IDs—then use `paint_terrain` on `Walls`.
-   - For a **limited Wang-ready** tileset, use only its declared supported
-     footprint family. Do not turn a missing mask into manual wall art.
-   Unless the caller supplies a different layout:
-   - Fill the entire map with the repeated Floor tile first; there is no
-     exterior void in the default sample.
-   - Paint the walkable footprint onto `Walls`: a centred 10×10 left lobe and
-     a centred 10×10 right lobe joined by a four-tile-tall bridge. Its central
-     two rows are the walkable passage; its top and bottom rows render as
-     boundary walls. Leave a 4×4 unpainted core inside the right lobe. Use a
-     mixed Wang set for this layout so the four concave inner corners are
-     distinguished from ordinary floor. The Wang output draws its boundary
-     wall art and uses its repeated floor tile inside the footprint.
-   - When the exact tileset has a verified opaque void tile, fill the core on
-     `Walls` after painting. Otherwise leave the core visibly distinct only
-     when the rendered test proves the intended result.
-   If Wang painting rejects the footprint or its rendered result has a blank,
-   wrong-facing, or broken join, return to
-   `$tiled-ai-add-tileset-autotiling`; do not fake the result by manually
-   picking edge tiles.
+5. Build the layout for the tileset's current state. Unless the caller gives a
+   different layout, centre two 10×10 lobes and connect them with a
+   four-tile-tall bridge. Keep the bridge's central two rows walkable.
+   - **Basic mode, no Wang set:** do this **before** invoking
+     `$tiled-ai-add-tileset-autotiling`. Choose exactly three distinct local
+     tile IDs by visual inspection when the caller has not picked them:
+     (1) the tile that looks most like a
+     non-directional, non-walkable wall, or a top-wall tile if no such tile
+     exists; (2) the tile that looks most like walkable floor; and (3) a tile
+     that indicates nothing, preferably all black or transparent. Put the
+     same first tile on *every* Figure 8 boundary cell, including both lobes
+     and the bridge, using `set_tiles` or `fill_region` on `Walls`. Put the
+     floor tile under the whole map. Put the empty-looking third tile in a
+     bounded patch inside the right lobe, leaving a walkable route around it.
+     Keep the left interior walkable.
+     Do not call `paint_terrain` or imply that these uniform walls are
+     autotiled. Save this basic sample so it can be compared with a later
+     Wang version.
+   - **Verified Wang mode:** make a more complex Figure 8 with varied wall
+     corners and a 4×4 interior core in the right lobe. Inspect
+     `list_wang_sets` against the map and its attached tileset ID. Use the
+     map-local Wang-set and color IDs returned after attachment—they may
+     differ from the source tileset document's IDs—then use `paint_terrain`
+     on `Walls`. For a limited Wang-ready tileset, stay within its verified
+     footprint family. When the exact tileset has a verified opaque void
+     tile, fill the core on `Walls` after painting. Otherwise use a core only
+     when the render proves the intended result. Keep the same walkable floor
+     tile across every `Floor` cell, including the exterior and lower-right
+     area. Add water or other display materials only when the caller asks;
+     the default sample should show the Figure 8 wall topology clearly.
+   - If Wang metadata exists but this footprint is unverified, use
+     `$tiled-ai-add-tileset-autotiling` to verify or repair it before Wang
+     painting. If the footprint cannot be verified, report that result; do
+     not label a manually assembled map as Wang-autotiled. If painting
+     produces a blank, wrong-facing, or broken join, return to that skill.
 6. Verify the floor, empty Objects layer, Walls result, and layer order with
    `read_region`, `list_layers`, and `get_region_image`. `read_region` pages
    at 256 cells, and images are bounded to 1024 pixels per dimension; paginate
    cell reads and split a 50×50, 32-pixel visual inspection into bounded views.
+   In basic mode, verify that every boundary cell has the one wall tile, the
+   left interior has the walkable tile, and the right patch has the
+   empty-looking third tile.
 7. Re-read revisions after every mutation. Save the map with `save_map` and
    save the external tileset separately with `save_tileset` only if it changed.
 
