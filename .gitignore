@@ -1,0 +1,39 @@
+# Local execution output and authoring state
+/.acceptance/
+/openspec/
+/.agents/
+/.codex/*
+!/.codex/INSTALL.md
+!/.codex/skills/
+/.claude/*
+!/.claude/INSTALL.md
+!/.claude/skills/
+
+# Python environments and generated test/cache files
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Tiled recovery and temporary files; authored TMX and TSX remain eligible
+*.tmx~
+*.tsx~
+*.autosave
+
+# Local credentials and editor/OS noise
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local evaluation fixtures
+/tests/

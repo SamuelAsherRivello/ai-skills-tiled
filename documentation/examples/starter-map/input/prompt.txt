@@ -1,0 +1,1 @@
+Create a small portable Tiled map with one external tileset, a simple grass island surrounded by water, a path, and a player spawn point.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tiled AI Setup"
+  short_description: "Set up and verify the Tiled AI MCP bridge"
+  default_prompt: "Use $tiled-ai-setup to set up and verify my Tiled AI connection."

@@ -1,0 +1,9 @@
+interface:
+  display_name: "Tiled AI Add Tileset Automapping"
+  short_description: "Create and verify Tiled Automapping rules"
+  default_prompt: "Use $tiled-ai-add-tileset-automapping to create and verify rule maps for this tileset."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "tiled-ai"
+      description: "Live Tiled editor bridge"
