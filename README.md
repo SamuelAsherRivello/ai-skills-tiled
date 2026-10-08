@@ -20,9 +20,10 @@ Create and edit 2D game art, maps, tilesets, terrain, objects, and collision dat
 
 The thumbnail above adapts the visual composition of [AI Skills Blender](https://github.com/SamuelAsherRivello/ai-skills-blender) for 2D level design. See the [marketing asset notes](documentation/marketing/README.md).
 
-### Example
+### Examples
 
-<a href="documentation/examples/starter-map/README.md"><img src="documentation/examples/starter-map/output/preview.png" width="320" alt="Starter Tiled map with grass, water, and path" /></a>
+<a href="documentation/examples-readme.md"><img src="documentation/examples/06-sunlit-desert-oasis/output/preview.png" width="320" alt="Sunlit Desert Oasis Wang sample level" /></a>
+<a href="documentation/examples-readme.md"><img src="documentation/examples/05-robotic-coolant-facility/output/preview.png" width="320" alt="Robotic Coolant Facility Wang sample level" /></a>
 
 ## Table of Contents
 
@@ -82,7 +83,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 
 ### Examples
 
-[Open the examples guide](documentation/examples/README.md) for a portable Tiled map and tileset.
+[Browse ten Wang examples](documentation/examples-readme.md) with prompts, portable Tiled maps, tileset PNGs, and sample level PNGs at 16×16, 32×32, and 64×64.
 
 ### Structure
 
@@ -91,7 +92,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 - `.claude/skills/`: generated Claude Code package with a client-specific setup workflow.
 - `scripts/`: installation, package synchronization, and validation.
 - `documentation/references/`: source reference material.
-- `documentation/examples/`: portable example project and previews.
+- `documentation/examples/`: portable example projects and previews.
 - `documentation/marketing/`: project artwork and source notes.
 
 ### Dependencies

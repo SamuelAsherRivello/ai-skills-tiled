@@ -1,0 +1,1 @@
+$tiled-ai-create-art Create a grid-safe mixed Wang tileset at 32x32 with the theme glowing mushroom grove, violet moss, roots, luminous pool; then add the tileset and Wang terrain in Tiled and make a 28x14 Figure 8 sample level with a 4x4 unwalkable core.
