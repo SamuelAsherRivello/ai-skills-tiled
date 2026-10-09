@@ -73,9 +73,9 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 
 ### Skills
 
-[Browse all twelve skills](documentation/skills-readme.md), from art generation and setup through tilesets, Automapping, objects, spawners, and collider updates.
+- [Browse all twelve skills](documentation/skills-readme.md), from art generation and setup through tilesets, Automapping, objects, spawners, and collider updates.
 
-[See the Scene Sheet 24x10 art format](documentation/art-formats/scene-sheet-24x10/README.md) and its Retro Dungeon, Forest, and Street themes.
+- [See the Scene Sheet 24x10 art format](documentation/art-formats/scene-sheet-24x10/README.md) and its Retro Dungeon, Forest, and Street themes.
 
 ### References
 
