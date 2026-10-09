@@ -24,4 +24,10 @@ For bug reports, include what you tried, what you expected, what happened, and s
 4. Check the affected behavior and links. See the [helper and validation guide](scripts/script-documentation/helpers.md) for available checks. Describe what you tested and anything you could not verify.
 5. [Open a pull request](https://github.com/SamuelAsherRivello/ai-skills-tiled/pulls) explaining the problem, your changes, and any related issue. Draft pull requests are welcome for work in progress.
 
+## Verification and release boundary
+
+Before release, run the commands in the [maintenance guide](documentation/maintenance-readme.md). They verify skill metadata, generated client-package synchronization, documentation links, and selected portable Tiled fixtures.
+
+For skills that edit an open Tiled document, also run the focused live smoke scenario in the maintenance guide with the supported `rpgjs/tiled-ai` bridge. Record the editor and bridge revisions, the inspected document, the mutation result, and the visual verification. Repository validators do not replace this editor check or downstream game-runtime tests.
+
 Keep discussions respectful and constructive. Ask questions if you are unsure where to start—we welcome collaboration at every experience level.
