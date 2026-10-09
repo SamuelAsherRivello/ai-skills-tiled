@@ -75,15 +75,19 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 
 - [Browse all twelve skills](documentation/skills-readme.md), from art generation and setup through tilesets, Automapping, objects, spawners, and collider updates.
 
-- [See the Scene Sheet 24x10 art format](documentation/art-formats/scene-sheet-24x10/README.md) and its Retro Dungeon, Forest, and Street themes.
-
 ### References
 
-[Review the MCP editing contract](documentation/reference-readme.md) and the reference copies packaged with individual skills.
+- [Review the MCP editing contract](documentation/reference-readme.md) and the reference copies packaged with individual skills.
+
+- [See the Scene Sheet 24x10 art format](documentation/art-formats/scene-sheet-24x10/README.md) and its Retro Dungeon, Forest, and Street themes.
 
 ### Examples
 
-[Browse the Wang examples](documentation/examples-readme.md) with prompts, portable Tiled maps, tileset PNGs, and sample level PNGs at 16×16, 32×32, and 64×64.
+- [Browse the Wang examples](documentation/examples-readme.md) with prompts, portable Tiled maps, tileset PNGs, and sample level PNGs at 16×16, 32×32, and 64×64.
+
+### Maintenance
+
+[Read the maintenance and release checks](documentation/maintenance-readme.md) for source/package synchronization, generated examples, and the live Tiled/MCP smoke-test boundary.
 
 ### Structure
 
@@ -94,6 +98,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 - `documentation/references/`: source reference material.
 - `documentation/examples/`: portable example projects and previews.
 - `documentation/marketing/`: project artwork and source notes.
+- `tmp/`: retained historical authoring material; not part of the supported release interface.
 
 ### Dependencies
 
