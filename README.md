@@ -83,7 +83,7 @@ Claude Code uses `/skill-name` syntax. Each skill states its inputs, verificatio
 
 ### Examples
 
-[Browse ten Wang examples](documentation/examples-readme.md) with prompts, portable Tiled maps, tileset PNGs, and sample level PNGs at 16×16, 32×32, and 64×64.
+[Browse the Wang examples](documentation/examples-readme.md) with prompts, portable Tiled maps, tileset PNGs, and sample level PNGs at 16×16, 32×32, and 64×64.
 
 ### Structure
 
