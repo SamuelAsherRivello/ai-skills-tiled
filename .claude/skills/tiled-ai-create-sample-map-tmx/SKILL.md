@@ -30,6 +30,9 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
   choosing a layout. An empty list means **basic mode**. A Wang set is ready
   for **Wang mode** only when its documented footprint has been verified in
   the live editor; metadata alone is not proof that the Figure 8 will render.
+- Bind readiness to the current PNG, TSX, role-key hashes, fixture, and editor
+  revision. Changed art or IDs invalidate older proof. Resolve semantic roles
+  from the selected bundle, not a tile count or an assumed floor/void ID.
 - When the caller marks or names the three basic-mode tiles, use those picks
   for the stated roles. For an annotated image, confirm its grid and convert
   each marked cell to the exact local tile ID before editing; do not replace
@@ -40,7 +43,7 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
 1. Use `create_map` with the chosen dimensions and an initial `Floor` tile
    layer. Attach the selected tileset with `attach_tileset`.
 2. Create an empty `Objects` object layer and an empty `Walls` tile layer.
-   Keep the order `Objects`, `Walls`, `Floor` from top to bottom. The current
+   Keep the basic order `Objects`, `Walls`, `Floor` from top to bottom. The current
    MCP returns root layers bottom-to-top, so create and verify the returned
    order `Floor`, `Walls`, `Objects`; use the live layer IDs rather than names
    alone.
@@ -89,7 +92,9 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
      differ from the source tileset document's IDs—then use `paint_terrain`
      on `Walls`. For a limited Wang-ready tileset, stay within its verified
      footprint family. When the exact tileset has a verified opaque void
-     tile, fill the core on `Walls` after painting. Otherwise use a core only
+     tile, place the non-walkable core as a bounded `Void Fill` patch above
+     `Floor` and below `Walls`, without replacing inspected Wang cells.
+     Otherwise use a core only
      when the render proves the intended result. Keep the same walkable floor
      tile across every `Floor` cell, including the exterior and lower-right
      area. Add water or other display materials only when the caller asks;
@@ -98,6 +103,13 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
      straight-wall cell, place its matching room-corner tile on a separate
      `Wall Joints` layer above `Walls`. Document those manual join cells and
      verify that the underlying `Walls` layer still matches every Wang mask.
+     Declare the two lobes, bridge, exterior, and core as explicit regions
+     before selecting rendering roles. For the 28x14 gallery fixture, retain
+     the two 10x10 lobes, four-row bridge with two clear passage rows, and
+     non-walkable 4x4 core with a route around it. A missing diagonal or the
+     same Wang signature can describe different architectural boundaries;
+     select room-facing versus void-facing art from the declared regions.
+     Do not ask random duplicate Wang variants to make that choice.
    - If Wang metadata exists but this footprint is unverified, use
      `/tiled-ai-create-tileset-autotiling-tsx` to verify or repair it before Wang
      painting. If the footprint cannot be verified, report that result; do
@@ -111,6 +123,22 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
    that depict height inside one tile, check that the cap, face, and lower
    shadow stay aligned through straight runs, all four room corners, and
    bridge joins in the full map render.
+   A native wall spanning several source cells needs all its pieces; do not
+   shrink it into one tile or omit its face. Keep a source-bound role record
+   containing semantic name, family/facing, relative source path and hash,
+   reviewed source bounds, native footprint, local tile IDs, signed offsets
+   from an anchor, rendering layers, and terrain signatures only for actual
+   Wang pieces. Record conditional corner equivalences against this source.
+   Place continuations and contextual replacements on `Wall Details` above
+   `Wall Joints`. A replacement must cover displaced art, including its
+   background, so transparent pixels cannot reveal the wrong family beneath.
+   With these layers the top-to-bottom order is `Objects`, `Wall Details`,
+   `Wall Joints`, `Walls`, optional `Void Fill`, `Floor`, using one TSX.
+   In the annotated Robot example, both corners 3 must match corrected source
+   corner 1; the top runs 4 must retain source treatment 6, including its face;
+   area 9 must use the separate void-facing family. Review every direction,
+   all four bridge joins, the route around the core, and the clear two-row
+   passage after placing complete assemblies.
 7. Verify the floor, empty Objects layer, Walls result, and layer order with
    `read_region`, `list_layers`, and `get_region_image`. `read_region` pages
    at 256 cells, and images are bounded to 1024 pixels per dimension; paginate
@@ -118,6 +146,13 @@ tiles and a 50×50-cell world. Never overwrite an existing map or tileset.
    In basic mode, verify that every boundary cell has the one wall tile, the
    left interior has the walkable tile, and the right patch has the
    empty-looking third tile.
+   In Wang mode, compare actual required and exercised signatures individually
+   and inspect raw `Walls` separately from the composite. Erase/repaint a room
+   boundary and a void-adjacent boundary, reapply affected explicit recipes,
+   and verify both again. Record which cells were Wang-painted versus explicit
+   rendering placements. Signature counts alone do not establish coverage.
+   Generate the delivered preview from the saved bundle's actual layers and
+   atlas geometry; a missing preview must not trigger a simplified map rebuild.
 8. Re-read revisions after every mutation. Save the map with `save_map` and
    save the external tileset separately with `save_tileset` only if it changed.
 

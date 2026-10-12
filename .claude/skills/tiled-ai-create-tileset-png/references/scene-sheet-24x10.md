@@ -21,9 +21,11 @@ canvas. Every material must remain legible at the requested native cell size.
 
 ## Layout contract
 
-Recreate the reference image's structural arrangement exactly when changing
-theme or cell size. Scale its cell coordinates to the requested size; preserve
-the silhouette, wall bands, openings, and transparent gaps. Do not treat the
+Recreate the reference image's structural arrangement when changing theme or
+cell size. Scale its cell coordinates to the requested size; preserve the
+region footprints, complete wall bands, openings, and transparent gaps. The
+theme's finished outlines may differ from the reference's exact alpha pixels;
+never impose the reference alpha on new art. Do not treat the
 four broad regions below as permission to redraw the layout. The same canvas
 size and grid alone do not establish the same format:
 
@@ -48,6 +50,14 @@ depth of its top cap, vertical face, and lower shadow when changing themes or
 building directional tiles. Check these bands across neighboring cells and
 around all four corners at native size and enlarged size. Wall height does
 not change the 24×10 grid or the requested cell dimensions.
+
+A wall can also span multiple cells: the Robot top-wall cap in one row and
+its face in the next form one complete architectural role. Record its full
+source bounds, then preserve native-size pieces with an assembly anchor and
+cell offsets. A cap-only crop fails acceptance. Inspect all exposed top,
+left, right, bottom, and corner finishes; intended black or transparent space
+is valid, whereas a clipped finish is not. Connected tile seams remain open
+and aligned rather than acquiring an unwanted end cap.
 
 ## Theme briefs
 

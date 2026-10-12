@@ -1,4 +1,4 @@
-"""Package ten portable Figure 8 Wang examples for the documentation gallery.
+"""Package eight portable Figure 8 Wang examples for the documentation gallery.
 
 Existing verified examples are copied without changing their source projects.
 Five new 32px companions sample original generated material sheets in each
@@ -13,6 +13,8 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from PIL import Image
+
+from render_tiled_bundle import render_bundle
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -90,14 +92,10 @@ def package_existing(name: str, image: Path, tsx: Path, tmx: Path,
     if image.resolve() != (target / "tiles.png").resolve():
         shutil.copyfile(image, target / "tiles.png")
     rewrite_portable_xml(tsx, target / "tiles.tsx", "tsx")
-    if preview is None:
-        write_map(target / "level.tmx", 64)
-        render_preview(target)
-    else:
-        rewrite_portable_xml(tmx, target / "level.tmx", "tmx")
-        preview = preview if preview.exists() else target / "preview.png"
-        if preview.resolve() != (target / "preview.png").resolve():
-            shutil.copyfile(preview, target / "preview.png")
+    # A preview is derived evidence, never authority to reconstruct the map.
+    # Preserve all canonical layers, including explicit joints and details.
+    rewrite_portable_xml(tmx, target / "level.tmx", "tmx")
+    render_preview(target)
 
 
 def material_patch(source: Image.Image, quadrant_x: int,
@@ -186,26 +184,11 @@ def build_generated(name: str) -> None:
 
 
 def render_preview(target: Path) -> None:
-    image = Image.open(target / "tiles.png").convert("RGBA")
+    canvas = render_bundle(target / "level.tmx")
+    canvas.save(target / "preview-native.png")
     map_root = ET.parse(target / "level.tmx").getroot()
     tile = int(map_root.get("tilewidth"))
     width, height = int(map_root.get("width")), int(map_root.get("height"))
-    canvas = Image.new("RGBA", (width * tile, height * tile))
-    for layer in map_root.findall("layer"):
-        data = layer.find("data")
-        assert data is not None and data.get("encoding") == "csv"
-        ids = [int(value) for value in (data.text or "").replace("\n", "").split(",")
-               if value.strip()]
-        assert len(ids) == width * height
-        for index, gid in enumerate(ids):
-            if gid == 0:
-                continue
-            local_id = gid - 1
-            cell = image.crop(((local_id % 6) * tile, (local_id // 6) * tile,
-                               (local_id % 6 + 1) * tile,
-                               (local_id // 6 + 1) * tile))
-            canvas.alpha_composite(cell, ((index % width) * tile,
-                                          (index // width) * tile))
     if tile == 64:
         canvas = canvas.resize((width * 32, height * 32), Image.Resampling.NEAREST)
     canvas.save(target / "preview.png")
@@ -221,9 +204,6 @@ GALLERY = (
     ("03-rainwashed-brick-street", "Rainwashed Brick Street", 16,
      "retro pixel art, red brick walls, cobblestone street, blue sewer",
      "Adapted from the existing [Retro Street Wang companion](../../art-formats/scene-sheet-24x10/retro-street-wang/README.md). The source notes explain its generated concept and composition; the corrected source Figure 8 was previously painted and checked in Tiled."),
-    ("04-stone-courtyard-ruins", "Stone Courtyard Ruins", 32,
-     "warm stone courtyard tiles, dark ruined boundary, restrained pixel art",
-     "Adapted from a local Figure 8 Autotiling fixture built by a repository script. That source was a portable fixture, not a live terrain-painting result."),
     ("05-robotic-coolant-facility", "Robotic Coolant Facility", 64,
      "robotic steel facility, blue coolant, dark panel walls",
      "Uses an existing Space Tech Robot scene sheet and its Wang companion. A user-supplied robot screenshot inspired its palette; its original creator and license were not provided. The compact map and preview were assembled by this gallery builder."),
@@ -238,9 +218,6 @@ GALLERY = (
      "Original material swatches were generated for this gallery with the built-in image tool. The gallery builder sampled them into a 21-mask Wang companion."),
     ("09-coral-sunken-temple", "Coral Sunken Temple", 32,
      "sunken coral temple, sea-green mosaic, seawater, pixel art",
-     "Original material swatches were generated for this gallery with the built-in image tool. The gallery builder sampled them into a 21-mask Wang companion."),
-    ("10-glowing-mushroom-grove", "Glowing Mushroom Grove", 32,
-     "glowing mushroom grove, violet moss, roots, luminous pool",
      "Original material swatches were generated for this gallery with the built-in image tool. The gallery builder sampled them into a 21-mask Wang companion."),
 )
 
@@ -299,23 +276,16 @@ def main() -> None:
         SCENES / "retro-street-wang/output/retro-street-figure-8-wang-corners.tmx",
         SCENES / "retro-street-wang/output/preview-corners.png")
     package_existing(
-        "04-stone-courtyard-ruins",
-        EXAMPLES / "figure-8-autotiling/output/tiles.png",
-        EXAMPLES / "figure-8-autotiling/output/tiles.tsx",
-        EXAMPLES / "figure-8-autotiling/output/figure-8.tmx",
-        EXAMPLES / "figure-8-autotiling/output/preview.png")
-    package_existing(
         "05-robotic-coolant-facility",
         SCENES / "space-tech-robot/tiles.png",
         SCENES / "space-tech-robot/wang/output/space-tech-robot-wang.tsx",
         ROOT / "output/tiled-ai-sample-level/space-tech-robot-figure-8-wang.tmx",
         None)
     for name in ("06-sunlit-desert-oasis", "07-snowbound-pine-village",
-                 "08-volcanic-basalt-keep", "09-coral-sunken-temple",
-                 "10-glowing-mushroom-grove"):
+                 "08-volcanic-basalt-keep", "09-coral-sunken-temple"):
         build_generated(name)
     write_example_docs()
-    print("Packaged 10 Wang examples")
+    print("Packaged 8 Wang examples")
 
 
 if __name__ == "__main__":

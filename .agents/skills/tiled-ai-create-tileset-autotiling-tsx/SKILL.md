@@ -204,6 +204,34 @@ Sources for this profile: [Stagecast Blob reference](https://www.boristhebrave.c
 
 ## Author the terrain set
 
+### Bind architectural roles to the exact source
+
+Keep a portable role key beside the fixture. For every role, record the
+relative source path and content hash, reviewed source bounds, architectural
+family (`room-facing` or `void-facing`), facing relative to floor/void, native
+cell size, local IDs, and eight-value Wang signature. For a complete role
+spanning multiple cells, also record its anchor, signed offsets, rendering
+layers, and all required pieces. Mark non-terrain pieces as rendering-only.
+Never infer floor/void IDs from tile count or borrow another theme's IDs.
+
+A room's bottom edge and the top edge of a central hole can have the same
+floor-neighbour signature while needing different architecture. Keep the
+Wang-painted topology inspectable and use explicit region context to choose
+additional rendering recipes; duplicate signatures or random probabilities
+cannot choose that context. Record every explicit placement separately from
+`paint_terrain` output. Use one attached TSX when the sample requires one.
+
+Only reuse inner/outer-corner art when the exact source's family, facing,
+complete footprint, and rendered seams establish equivalence. A missing
+diagonal is insufficient. The profile tables below describe their named
+sources, not a general instruction to reuse room corners around every void.
+
+List the actual required and exercised signatures, not a minimum tile count.
+Bind proof to source/atlas/TSX/key content identities and the fixture revision.
+Changing pixels, assignments, or recipes invalidates inherited visual proof;
+re-read cells and render the affected fixture in Tiled before restoring a
+current readiness claim. Record offline-only results as missing live proof.
+
 1. Create or update one `edge`, `corner`, or `mixed` Wang set from the source
    art. Keep the eight-index order used by Tiled: top, top-right, right,
    bottom-right, bottom, bottom-left, left, top-left. A tile may have one
@@ -308,10 +336,13 @@ For the default Figure 8, create a disposable map using the exact TSX:
 - When the art has an opaque void tile, place it in the unpainted 4×4 core
   after the Wang operation so that core is visibly non-walkable. This is a
   deliberate fill, not a claimed Wang result.
-- Compare every inner corner with the matching outer corner at the same
-  orientation. For a full-width room wall, a small quadrant cutout is not
-  equivalent to the complete corner tile. For walls with a visible cap, face,
-  and lower shadow, inspect all three bands at each straight-to-corner seam;
+- Compare each corner with its recorded source family and facing. For the
+  Robot example, both room corners marked 3 must match corrected source 1,
+  the walls marked 4 must retain source treatment 6, and the core marked 9
+  needs its own void-facing treatment. Preserve all pieces of a tall source
+  wall; a cap-only crop or a small quadrant cutout is not a complete role.
+  For walls with a visible cap, face, and lower shadow, inspect all three
+  bands at each straight-to-corner seam;
   Wang ID agreement alone cannot prove visual height continuity. Check the
   four bridge joins too:
   a walkable-footprint Wang mask may be identical to ordinary floor or a
@@ -319,6 +350,12 @@ For the default Figure 8, create a disposable map using the exact TSX:
   Wang-painted footprint intact and put those explicit corner tiles on a
   separate `Wall Joints` layer above `Walls`; record the cells and tile IDs.
   Do not claim that the Wang set generated the overlay.
+- Put complete multi-cell continuations and contextual replacements on a
+  declared `Wall Details` layer above the joins. A replacement must cover the
+  displaced art completely so transparency cannot leak the wrong family.
+  Check bounds and the two-row bridge passage. Verify both raw Wang cells and
+  the final composite. After erase/repaint, reapply affected recipes and
+  verify both results again; manual details are not brush-generated output.
 - Verify the complete cell set with `read_region` and the rendered map with
   `get_region_image`. The test fails if any expected Wang cell is null,
   transparent, a wrong-facing edge, or a broken join.

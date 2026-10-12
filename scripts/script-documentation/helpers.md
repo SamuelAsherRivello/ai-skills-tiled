@@ -6,6 +6,17 @@
 - `build_starter_example.py` regenerates the checked-in starter map and preview.
 - `build_figure8_example.py` regenerates the portable Figure 8 map, Wang assignments, tile art, and preview.
 - `build_wang_gallery.py` is the maintained gallery builder for selected generated art and Wang companion assets; see the [maintenance guide](../../documentation/maintenance-readme.md) for its ownership and verification boundary.
+- `render_tiled_bundle.py MAP.tmx OUTPUT.png` renders a native RGBA inspection
+  image from one external atlas TSX and its referenced PNG. It resolves firstgid,
+  columns, tile sizes, margins and spacing, preserves tile-layer order/visibility
+  and opacity, and accepts an empty Objects layer. It supports finite orthogonal,
+  right-down, uncompressed CSV maps only. Visible groups, image layers, objects,
+  transforms, offsets, tints, blend modes, animations and collection tiles are
+  rejected rather than silently omitted. This is offline evidence, not Tiled proof.
+- `test_wang_gallery.py` runs disposable offline packaging/rendering regressions:
+  missing previews must retain canonical joints/details, non-six-column atlases
+  and non-one firstgid must address the right pixels, and unsupported visible
+  features or out-of-range IDs must fail. Run `python scripts/test_wang_gallery.py`.
 - `install-codex.ps1` and `install-claude.ps1` wrap `install-skills.ps1`; use `-DryRun` before installing.
 - `scripts/adapters/claude-tiled-ai-setup.md` is the Claude Code setup variant.
 
